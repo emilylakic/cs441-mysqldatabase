@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">112514593513</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">com.example.myapplication.newgame</string>
+    <!-- achievement Lightning Fast -->
+    <string name="achievement_lightning_fast" translatable="false">CgkI6eWRk6MDEAIQAg</string>
+    <!-- leaderboard CS441 -->
+    <string name="leaderboard_cs441" translatable="false">CgkI6eWRk6MDEAIQAQ</string>
+</resources>

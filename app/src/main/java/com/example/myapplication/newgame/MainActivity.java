@@ -1,14 +1,21 @@
 package com.example.myapplication.newgame;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+
+public class MainActivity extends AppCompatActivity implements OnConnectionFailedListener {
 
     private Button mainButton;
     private TextView scoreView;
@@ -16,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int score = 0;
     private boolean playing = false;
+    private GoogleApiClient apiClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         mainButton = (Button)findViewById(R.id.main_button);
         scoreView = (TextView)findViewById(R.id.score_view);
         timeView = (TextView)findViewById(R.id.time_view);
+
+        apiClient = new GoogleApiClient.Builder(this)
+                .addApi(Games.API)
+                .addScope(Games.SCOPE_GAMES)
+                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        finish();
+                    }
+                }).build();
 
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 }
