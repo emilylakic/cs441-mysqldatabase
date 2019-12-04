@@ -15,7 +15,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
-public class MainActivity extends AppCompatActivity implements OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity {
 
     private Button mainButton;
     private TextView scoreView;
@@ -34,16 +34,6 @@ public class MainActivity extends AppCompatActivity implements OnConnectionFaile
         scoreView = (TextView)findViewById(R.id.score_view);
         timeView = (TextView)findViewById(R.id.time_view);
 
-        apiClient = new GoogleApiClient.Builder(this)
-                .addApi(Games.API)
-                .addScope(Games.SCOPE_GAMES)
-                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        finish();
-                    }
-                }).build();
-
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnConnectionFaile
                     mainButton.setText("Keep Clicking");
 
                     // Initialize CountDownTimer to 60 seconds
-                    new CountDownTimer(60000, 1000) {
+                    new CountDownTimer(10000, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
                             timeView.setText("Time remaining: " + millisUntilFinished/1000);
@@ -76,8 +66,4 @@ public class MainActivity extends AppCompatActivity implements OnConnectionFaile
 
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
 }
