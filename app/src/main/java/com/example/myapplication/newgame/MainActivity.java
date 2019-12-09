@@ -5,18 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 
@@ -32,6 +41,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -46,17 +57,25 @@ public class MainActivity extends AppCompatActivity {
     public static final int READ_TIMEOUT=15000;
     private EditText editName;
     private EditText editGame;
-    private static String url_create_product = "http://cs.binghamton.edu/~pmadden/courses/441score/getscores.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainButton = (Button) findViewById(R.id.main_button);
+        other = (Button) findViewById(R.id.other);
         scoreView = (TextView) findViewById(R.id.score_view);
         timeView = (TextView) findViewById(R.id.time_view);
         editName = (EditText) findViewById(R.id.editName);
         editGame = (EditText) findViewById(R.id.editGame);
+
+        other.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +107,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static void postNewComment(Context context, final UserAccount userAccount, final String comment, final int blogId, final int postId){
+        mPostCommentResponse.requestStarted();
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest sr = new StringRequest(Request.Method.POST,"http://api.someservice.com/post/comment", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                mPostCommentResponse.requestCompleted();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mPostCommentResponse.requestEndedWithError(error);
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("user",userAccount.getUsername());
+                params.put("pass",userAccount.getPassword());
+                params.put("comment", Uri.encode(comment));
+                params.put("comment_post_ID",String.valueOf(postId));
+                params.put("blogId",String.valueOf(blogId));
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        queue.add(sr);
+    }
+    public interface PostCommentResponseListener {
+        public void requestStarted();
+        public void requestCompleted();
+        public void requestEndedWithError(VolleyError error);
+    }
+
     // Triggers when LOGIN Button clicked
     public void checkLogin(View arg0) {
 
