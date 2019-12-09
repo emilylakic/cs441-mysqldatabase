@@ -8,13 +8,20 @@
     android:background="#000000"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-150px"
+        app:srcCompat="@drawable/speedyclicker" />
+
     <TextView
         android:id="@+id/enterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="450px"
         android:text="Enter Name: " />
 
     <EditText
@@ -25,8 +32,8 @@
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:inputType="textPersonName"
-        android:layout_marginTop="10px"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:layout_marginTop="460px"
+        android:backgroundTint="#ff5f01"
         android:text="" />
 
     <TextView
@@ -35,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120px"
+        android:layout_marginTop="560px"
         android:text="Enter Game: " />
 
     <EditText
@@ -45,20 +52,29 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_marginTop="90px"
+        android:layout_marginTop="570px"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:backgroundTint="#fe1c80"
         android:text="" />
-
 
     <Button
         android:text="Start"
         android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="690px"
         android:id="@+id/main_button" />
+
+    <Button
+        android:text="Other"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="760px"
+        android:onClick="checkLogin"
+        android:id="@+id/other" />
 
     <TextView
         android:text="Time remaining: 0 seconds"
@@ -66,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/main_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50px"
         android:textColor="#FFFFFF"
         android:id="@+id/time_view" />
 
@@ -75,8 +91,7 @@
         android:layout_width="wrap_content"
         android:textColor="#FFFFFF"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/main_button"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="400px"
         android:layout_centerHorizontal="true"
         android:id="@+id/score_view" />
 
