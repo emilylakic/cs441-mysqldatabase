@@ -57,23 +57,43 @@
         android:backgroundTint="#fe1c80"
         android:text="" />
 
+    <TextView
+        android:id="@+id/enterScore"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="670px"
+        android:text="Enter Score: " />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:id="@+id/scoreField"
+        android:ems="10"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="680px"
+        android:inputType="numberPassword"
+        android:backgroundTint="#fe1c80" />
+
     <Button
         android:text="Start"
         android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="690px"
+        android:layout_marginTop="780px"
         android:id="@+id/main_button" />
 
     <Button
-        android:text="Other"
+        android:text="Submit to Database"
         android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="760px"
-        android:onClick="checkLogin"
+        android:layout_marginTop="880px"
         android:id="@+id/other" />
 
     <TextView
@@ -82,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/main_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50px"
+        android:layout_marginTop="100px"
         android:textColor="#FFFFFF"
         android:id="@+id/time_view" />
 
