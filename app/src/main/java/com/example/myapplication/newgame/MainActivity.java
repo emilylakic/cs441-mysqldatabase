@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static String firstName, hobby;
     private TextView scoreView;
     private TextView timeView;
+    private TextView gameOver;
     private int score = 0;
     private boolean playing = false;
     EditText editName, editGame, scoreField;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editName);
         editGame = (EditText) findViewById(R.id.editGame);
         other = (Button) findViewById(R.id.other);
+        gameOver = (TextView) findViewById(R.id.gameOver);
 
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onFinish() {
                             playing = false;
-                            timeView.setText("Game Over");
+                            gameOver.setText("Game Over");
                             mainButton.setVisibility(View.GONE);
                         }
                     }.start();  // Start the timer

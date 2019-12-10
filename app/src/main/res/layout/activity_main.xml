@@ -16,12 +16,48 @@
         app:srcCompat="@drawable/speedyclicker" />
 
     <TextView
+        android:text="Score: 0"
+        android:layout_width="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400px"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/score_view" />
+
+    <Button
+        android:text="Start"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450px"
+        android:id="@+id/main_button" />
+
+    <TextView
+        android:text="Time remaining: 0 seconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10px"
+        android:textColor="#FFFFFF"
+        android:id="@+id/time_view" />
+
+    <ImageView
+        android:id="@+id/scoreImg"
+        android:layout_width="327dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="550px"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/sendscoreimg" />
+
+    <TextView
         android:id="@+id/enterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="450px"
+        android:layout_marginTop="780px"
         android:text="Enter Name: " />
 
     <EditText
@@ -32,9 +68,8 @@
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:inputType="textPersonName"
-        android:layout_marginTop="460px"
-        android:backgroundTint="#ff5f01"
-        android:text="" />
+        android:layout_marginTop="765px"
+        android:backgroundTint="#ff5f01" />
 
     <TextView
         android:id="@+id/enterGame"
@@ -42,20 +77,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="560px"
-        android:text="Enter Game: " />
+        android:text="Enter Game: "
+        android:layout_marginTop="850px"/>
 
     <EditText
         android:id="@+id/editGame"
-        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="840px"
+        android:backgroundTint="#fe1c80"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_marginTop="570px"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="#fe1c80"
-        android:text="" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/enterScore"
@@ -63,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="670px"
+        android:layout_marginTop="920px"
         android:text="Enter Score: " />
 
     <EditText
@@ -74,18 +108,9 @@
         android:ems="10"
         android:text=""
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="680px"
-        android:inputType="numberPassword"
+        android:layout_marginTop="910px"
+        android:inputType="number"
         android:backgroundTint="#fe1c80" />
-
-    <Button
-        android:text="Start"
-        android:textColor="#FFFFFF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="780px"
-        android:id="@+id/main_button" />
 
     <Button
         android:text="Submit to Database"
@@ -93,27 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="880px"
+        android:layout_marginTop="998px"
         android:id="@+id/other" />
-
-    <TextView
-        android:text="Time remaining: 0 seconds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100px"
-        android:textColor="#FFFFFF"
-        android:id="@+id/time_view" />
-
-    <TextView
-        android:text="Score: 0"
-        android:layout_width="wrap_content"
-        android:textColor="#FFFFFF"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400px"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/score_view" />
 
     <TextView
         android:id="@+id/computeresult"
@@ -125,5 +131,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gameOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="920px"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
